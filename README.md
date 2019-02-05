@@ -1,5 +1,8 @@
 # iLeadVexRobotics
 Code and description for one of iLead's Vex Robotics teams for 2019.
+## Vex File 0.5.5 (Released 2/5/2019)
+* Added LiftMotor2 controls to function liftControls
+* Updated C++ file to match current Vex file
 ## Vex File 0.5 (Released 2/1/2019)
 #### 2/1/2019
 * Added Vex File compatible with Vex Coding Studio
