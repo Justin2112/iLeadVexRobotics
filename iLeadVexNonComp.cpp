@@ -1,3 +1,5 @@
+//This is a testing file for iLead Vex Robotics 2019, this is not intended for competition use
+
 #include "robot-config.h"
 bool tankControl;//boolean that when true enables tank control and when false enables arcade control
 
@@ -26,6 +28,19 @@ void liftControls() //controls for the lift on the robot
 	else //if no control statement is true then stops the lift motor and leaves it in position
 	{
 		LiftMotor.stop();
+	}
+	//Second Lift
+	if (Controller1.ButtonR1.pressing() == true) //LiftMotor2 Up
+	{
+		LiftMotor2.spin(directionType::fwd, 75, velocityUnits::pct);
+	}
+	else if (Controller1.ButtonL2.pressing() == true) //LiftMotor2 will go down when l2 is pressed
+	{
+		LiftMotor2.spin(directionType::rev, 75, velocityUnits::pct); //will make the second stage of the lift go down
+	}
+	else
+	{
+		LiftMotor2.stop();
 	}
 }
 
