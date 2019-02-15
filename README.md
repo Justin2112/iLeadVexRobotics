@@ -1,5 +1,16 @@
 # iLeadVexRobotics
-Code and description for one of iLead's Vex Robotics teams for 2019.
+Code and description for one of iLead's Vex Robotics teams for 2019
+## Current setup
+![Image of vex parts](https://github.com/Justin2112/iLeadVexRobotics/blob/master/vexPartsAndPorts.PNG)
+## Vex File 0.8.0 (Released 2/14/2019)
+#### 2/14/2019
+* Made competition files for tank and arcade from non-competition file
+* Updated vexPartsAndPorts.PNG to have motors added
+#### 2/12/2019
+* Made functions for autonomous like moveForward() and pivotRight()
+#### 2/8/2019
+* Added SpoolMotor to setup
+* Added controls for SpoolMotor to Controller1
 ## Vex File 0.5.5 (Released 2/5/2019)
 * Added LiftMotor2 controls to function liftControls
 * Updated C++ file to match current Vex file
