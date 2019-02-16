@@ -27,7 +27,6 @@ Code and description for one of iLead's Vex Robotics teams for 2019
 * Restructured Vex and C++ file
 * Added more comments for easier reading
 * Added image of vex parts & assigned ports
-  ![Image of vex parts](https://github.com/Justin2112/iLeadVexRobotics/blob/master/vexPartsAndPorts.PNG)
 #### 1/30/2019
 * Added function liftControls and content
 * Assigned LiftMotor to port 10
