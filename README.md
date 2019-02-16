@@ -2,10 +2,17 @@
 Code and description for one of iLead's Vex Robotics teams for 2019
 ## Current setup
 ![Image of vex parts](https://github.com/Justin2112/iLeadVexRobotics/blob/master/vexPartsAndPorts.PNG)
+## Vex File 0.9.0 (Unreleased)
+#### 2/15/2019
+* Made code for autonomous function
+* Changed to have autonomous function to start before user control on non-competition file
+* Fixed functions spoolRetract(), spoolRelease(), and secondLift() to stop after # of seconds
+* Added negative values to be compatible with firstLift() and secondLift() to make the lift motors go in reverse
 ## Vex File 0.8.0 (Released 2/14/2019)
 #### 2/14/2019
 * Made competition files for tank and arcade from non-competition file
 * Updated vexPartsAndPorts.PNG to have motors added
+* Added functions firstLift() and secondLift() to move lift motors during autonomous period
 #### 2/12/2019
 * Made functions for autonomous like moveForward() and pivotRight()
 #### 2/8/2019
