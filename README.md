@@ -3,6 +3,11 @@ Code and description for one of iLead's Vex Robotics teams for 2019
 ## Current setup
 ![Image of vex parts](https://github.com/Justin2112/iLeadVexRobotics/blob/master/vexPartsAndPorts.PNG)
 ## Vex File 0.9.0 (Unreleased)
+#### 2/16/2019
+* Added motors to control claw, claw arm, and launcher
+  * Added ClawMotor, ClawArmMotor, and LauncherMotor
+* Added function clawControls() to control claw arm and claw during user control
+* Added function launcherControls() to control launcher during user control
 #### 2/15/2019
 * Made code for autonomous function
 * Changed to have autonomous function to start before user control on non-competition file
