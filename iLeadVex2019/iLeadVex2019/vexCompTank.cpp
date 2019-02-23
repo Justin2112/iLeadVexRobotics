@@ -12,23 +12,7 @@ vex::competition    Competition;
 //  AUTONOMOUS CODE //
 ////////////////////*/
 
-void moveForward(int speed, float seconds) {
-	seconds = seconds * 1000; //multiplies value by 1000 to convert to milliseconds
-	LeftMotor.spin(directionType::fwd, speed, velocityUnits::pct);
-	RightMotor.spin(directionType::fwd, speed, velocityUnits::pct);
-	task::sleep(seconds);
-	LeftMotor.stop();
-	RightMotor.stop();
-}
-void moveBackwards(int speed, float seconds) {
-	seconds = seconds * 1000; //multiplies value by 1000 to convert to milliseconds
-	LeftMotor.spin(directionType::rev, speed, velocityUnits::pct);
-	RightMotor.spin(directionType::rev, speed, velocityUnits::pct);
-	task::sleep(seconds);
-	LeftMotor.stop();
-	RightMotor.stop();
-}
-void pivotRight(int speed, float seconds) {
+void moveForward(int speed, float seconds) { //moves the robot forward in set speed for set seconds
 	seconds = seconds * 1000; //multiplies value by 1000 to convert to milliseconds
 	LeftMotor.spin(directionType::fwd, speed, velocityUnits::pct);
 	RightMotor.spin(directionType::rev, speed, velocityUnits::pct);
@@ -36,7 +20,7 @@ void pivotRight(int speed, float seconds) {
 	LeftMotor.stop();
 	RightMotor.stop();
 }
-void pivotLeft(int speed, float seconds) {
+void moveBackwards(int speed, float seconds) { //moves the robot backwards in set speed for set seconds
 	seconds = seconds * 1000; //multiplies value by 1000 to convert to milliseconds
 	LeftMotor.spin(directionType::rev, speed, velocityUnits::pct);
 	RightMotor.spin(directionType::fwd, speed, velocityUnits::pct);
@@ -44,15 +28,45 @@ void pivotLeft(int speed, float seconds) {
 	LeftMotor.stop();
 	RightMotor.stop();
 }
-void firstLift(int speed, float seconds) {
+void pivotRight(int speed, float seconds) { //pivots the robot right for set speed and set seconds
+	seconds = seconds * 1000; //multiplies value by 1000 to convert to milliseconds
+	LeftMotor.spin(directionType::fwd, speed, velocityUnits::pct);
+	RightMotor.spin(directionType::fwd, speed, velocityUnits::pct);
+	task::sleep(seconds);
+	LeftMotor.stop();
+	RightMotor.stop();
+}
+void pivotLeft(int speed, float seconds) { //pivots the robot left for set speed and set seconds
+	seconds = seconds * 1000; //multiplies value by 1000 to convert to milliseconds
+	LeftMotor.spin(directionType::rev, speed, velocityUnits::pct);
+	RightMotor.spin(directionType::rev, speed, velocityUnits::pct);
+	task::sleep(seconds);
+	LeftMotor.stop();
+	RightMotor.stop();
+}
+void firstLift(int speed, float seconds) { //spins the lift motor for set speed and set seconds
 	seconds = seconds * 1000; //multiplies value by 1000 to convert to milliseconds
 	LiftMotor.spin(directionType::fwd, speed, velocityUnits::pct);
 	task::sleep(seconds);
 }
-void secondLift(int speed, float seconds) {
+void secondLift(int speed, float seconds) { //spins the second lift motor by set speed and set seconds
 	seconds = seconds * 1000; //multiplies value by 1000 to convert to milliseconds
 	LiftMotor2.spin(directionType::rev, speed, velocityUnits::pct);
 	task::sleep(seconds);
+}
+void spoolRelease(int speed, float seconds) //retracts string from spool
+{
+	seconds = seconds * 1000;
+	SpoolMotor.spin(directionType::fwd, speed, velocityUnits::pct);
+	task::sleep(seconds);
+	SpoolMotor.stop();
+}
+void spoolRetract(int speed, float seconds) //releases string from spool
+{
+	seconds = seconds * 1000;
+	SpoolMotor.spin(directionType::rev, speed, velocityUnits::pct);
+	task::sleep(seconds);
+	SpoolMotor.stop();
 }
 
 /*////////////////////
@@ -101,11 +115,51 @@ void spoolControls() { //Controls for the spool motor
 		SpoolMotor.stop();
 	}
 }
+void clawControls() { //Controls for the claw and claw arm
+					  //Claw Arm control
+	if (Controller1.ButtonX.pressing() == true)
+	{
+		ClawArmMotor.spin(directionType::rev, 90, velocityUnits::pct);
+	}
+	else if (Controller1.ButtonB.pressing() == true)
+	{
+		ClawArmMotor.spin(directionType::fwd, 90, velocityUnits::pct);
+	}
+	else
+	{
+		ClawArmMotor.stop();
+	}
+	//Claw Controls
+	if (Controller1.ButtonLeft.pressing() == true)
+	{
+		ClawMotor.spin(directionType::fwd, 40, velocityUnits::pct);
+	}
+	else if (Controller1.ButtonRight.pressing() == true)
+	{
+		ClawMotor.spin(directionType::rev, 40, velocityUnits::pct);
+	}
+	else
+	{
+		ClawMotor.stop();
+	}
+}
+void launcherControls() { //Controls the launcher arm
+	if (Controller1.ButtonY.pressing() == true)
+	{
+		LauncherMotor.spin(directionType::rev, 100, velocityUnits::pct);
+	}
+	else
+	{
+		LauncherMotor.stop();
+	}
+}
 void robotControls() { //Tank, arcade and lift controls for the robot
 	liftControls(); //enables lift controls for the robot
 	spoolControls(); //enables controls for the spool motor
-	LeftMotor.spin(directionType::rev, (Controller1.Axis3.value()), velocityUnits::pct); //LeftMotor goes forward whenever the left joystick is pressed forward
-	RightMotor.spin(directionType::fwd, (Controller1.Axis2.value()), velocityUnits::pct); //RightMotor goes forward whenever the right joystick is pressed forward
+	clawControls(); //enables controls for the claw and claw arm motor
+	launcherControls(); //enables controls for the launcher motor
+	LeftMotor.spin(directionType::fwd, (Controller1.Axis3.value()), velocityUnits::pct); //LeftMotor goes forward whenever the left joystick is pressed forward
+	RightMotor.spin(directionType::rev, (Controller1.Axis2.value()), velocityUnits::pct); //RightMotor goes forward whenever the right joystick is pressed forward
 }
 /*---------------------------------------------------------------------------*/
 /*                          Pre-Autonomous Functions                         */
@@ -134,9 +188,27 @@ void pre_auton(void) {
 /*---------------------------------------------------------------------------*/
 
 void autonomous(void) {
-	// ..........................................................................
-	// Insert autonomous user code here.
-	// ..........................................................................
+
+	spoolRelease(60, 2.5); //Lowers the lift sstring
+	moveForward(100, 3); //moves forward for 3 seconds at full speed
+	firstLift(75, 1.5); //lifts the first lift up for 1.5 seconds
+	spoolRetract(40, 0.25); //releases lift string
+	moveBackwards(50, 1); //moves backwards at half speed for 1 second
+	LiftMotor.stop(); //stops the lift motor
+	moveBackwards(100, 0.5); //move backwards at full speed for 2.75 seconds
+	pivotRight(100, 0.25); //pivots the robot slightly to the right
+	spoolRelease(60, 1.25); //releases the spool string more to allow for lift
+	secondLift(75, 1.5); //the second stage of the lift goes up to lift the game object
+	moveForward(30, 0.3); //moves the robot forward towards the pole for the game object
+	LiftMotor2.spin(directionType::fwd, 75, velocityUnits::pct); //lowers the 2nd lift motor
+	task::sleep(1500); //waits 1.5 seconds
+	LiftMotor2.stop(); //stops the 2nd lift motor
+	LiftMotor.spin(directionType::rev, 75, velocityUnits::pct); //lowers the 1st lift motor
+	task::sleep(1500); //waits 1.5 seconds
+	LiftMotor.stop(); //stops the 1st lift motor
+	moveBackwards(30, 0.3); //moves the robot backwards
+	pivotLeft(100, 0.25); //pivots the robot left
+	moveBackwards(100, 2.5); //moves the robot backwards to park in starting space
 
 }
 
