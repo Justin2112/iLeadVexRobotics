@@ -2,7 +2,7 @@
 Code and description for one of iLead's Vex Robotics teams for 2019
 ## Current setup
 ![Image of vex parts](https://github.com/Justin2112/iLeadVexRobotics/blob/master/vexPartsAndPorts.PNG)
-## Vex File 0.9.0 (Unreleased)
+## Vex File 1.0.0 (Released 2/22/2019)
 #### 2/16/2019
 * Added motors to control claw, claw arm, and launcher
   * Added ClawMotor, ClawArmMotor, and LauncherMotor
