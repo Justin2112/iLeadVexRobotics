@@ -11,6 +11,8 @@ Code and description for one of iLead's Vex Robotics teams for 2019
 * Restructured autonomous for new robot
 * Updated picture for new robot setup
 # Robot 1
+## Robot 1 setup
+![Image of vex robot 1 parts](https://github.com/Justin2112/iLeadVexRobotics/blob/master/vexPartsAndPorts.PNG)
 ## Vex File 1.0.0 (Released 2/22/2019)
 #### 2/16/2019
 * Added motors to control claw, claw arm, and launcher
