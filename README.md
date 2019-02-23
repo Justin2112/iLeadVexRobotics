@@ -1,7 +1,7 @@
 # iLeadVexRobotics
 Code and description for one of iLead's Vex Robotics teams for 2019
 ## Current setup
-![Image of vex parts](https://github.com/Justin2112/iLeadVexRobotics/blob/master/vexPartsAndPortsRobot2.PNG)
+![Image of vex parts](https://github.com/Justin2112/iLeadVexRobotics/blob/master/VexPartsAndPortsRobot2.PNG)
 # Robot 2
 ## Vex File 1.3.0 (Released 2/22/2019)
 * Removed functions and motors for spool and launcher
