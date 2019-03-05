@@ -1,8 +1,14 @@
 # iLeadVexRobotics
 Code and description for one of iLead's Vex Robotics teams for 2019
-## Current setup
-![Image of vex parts](https://github.com/Justin2112/iLeadVexRobotics/blob/master/VexPartsAndPortsRobot2.PNG)
+# Robot 3
+## Current Setup
+![Image of vex robot 3 parts](https://github.com/Justin2112/iLeadVexRobotics/blob/master/VexPartsAndPortsRobot3.PNG)
+## Vex File 1.5.0 (Released 3/5/2019)
+* Remade entire vex file to fit 2 left and 2 right motors
+* Added arcade controls for 4 motors
 # Robot 2
+## Robot 2 Setup
+![Image of vex robot 2 parts](https://github.com/Justin2112/iLeadVexRobotics/blob/master/VexPartsAndPortsRobot2.PNG)
 ## Vex File 1.3.0 (Released 2/22/2019)
 * Removed functions and motors for spool and launcher
 * Added functions for more claw control in autonomous
